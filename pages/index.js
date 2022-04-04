@@ -19,7 +19,7 @@ export default function Home({ allPostsData }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
-        <meta property="og:description" content="A site about coding to lofi beats"/>
+        <meta name="description" content="A site about coding to lofi beats"/>
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
