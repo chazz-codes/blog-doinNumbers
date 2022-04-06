@@ -18,10 +18,8 @@ export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
-        {/* <title>{siteTitle}</title> */}
-        <meta name="title" property="og:title" content="doinNumbers blog/>
-        <meta name="description" property="og:description" content="A site about coding to lofi beats"/>
-        <meta name="image" content="./"/>
+        <title>{siteTitle}</title>
+        
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
