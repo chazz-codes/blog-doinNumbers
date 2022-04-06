@@ -18,7 +18,8 @@ export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        {/* <title>{siteTitle}</title> */}
+        <meta name="title" property="og:title" content="doinNumbers blog/>
         <meta name="description" property="og:description" content="A site about coding to lofi beats"/>
         <meta name="image" content="./"/>
       </Head>
