@@ -18,29 +18,31 @@ export default function Home({ allPostsData }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
-
       </Head>
-      <section>
-        <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
-        contact me via <a href='mailto:chazz@doinnumbers.com'>email</a>
-        </p>
-      </section>
-      <section>
-        <h2>Blog</h2>
-        <ul>
-          {allPostsData.map(({ id, date, title }) => (
-            <li key={id}>
-            <Link href={`/posts/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <small >
-              <Date dateString={date} />
-            </small>
-          </li>
-          ))}
-        </ul>
-      </section>
+      <div className='col-span-1 lg:col-span-8'>
+        <section>
+          <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
+          contact me via <a href='mailto:chazz@doinnumbers.com'>email</a>
+          </p>
+        </section>
+        <section >
+          <h2>Blog</h2>
+          <ul>
+            {allPostsData.map(({ id, date, title }) => (
+              <li key={id}>
+              <Link href={`/posts/${id}`}>
+              <h3>
+                <a>{title}</a>    
+              </h3> 
+              </Link>
+              <small >
+                <Date dateString={date} />
+              </small>
+            </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </Layout>
   )
 }

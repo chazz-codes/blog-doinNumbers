@@ -23,7 +23,7 @@ export async function getStaticPaths(){
 
 export default function Post({ postData }) {
     return (
-      <Layout>
+      <Layout className='flex object-position:center'>
         <Head>
           <title>{postData.title}</title>
         </Head>
