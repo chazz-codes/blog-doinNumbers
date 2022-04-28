@@ -7,8 +7,8 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  padding: 10;
+  
   font-family: 'Courier Prime', monospace;
   color: white;
   &:before{
@@ -27,6 +27,56 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     
+  }
+}
+
+.articleBox {
+  background-color: white;
+  color: black;
+  padding-left: 13em;
+  padding-right: 13em; 
+  margin-left: 4em;
+  margin-right: 4em;
+  padding-top: 1em;
+  padding-bottom: 5em;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 1200px){
+  .articleBox {
+    padding-left: 12em;
+    padding-right: 12em; 
+    margin-left: 2em;
+    margin-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 5em;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .articleBox {
+    padding-left: 1em;
+    padding-right: 1em; 
+    margin-left: .2em;
+    margin-right: .2em;
+    padding-top: 1em;
+    padding-bottom: 5em;
+    font-size: 1em;
+  }
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  a:hover {
+    cursor: pointer;
+  }
+  img:hover{
+    cursor: pointer;
   }
 }
 

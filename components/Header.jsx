@@ -5,17 +5,14 @@ import Image from 'next/image';
 const Header = () => {
     const [categories, setCategories] = useState([])
 
-    // useEffect(() => {
-    //     getCategories()
-    //     .then((newCategories) => setCategories(newCategories));
-    //     }, []);
+   
 
   return (
-    <div className="container mx-auto px-10 mb-8">
-        <div className="border-b w-full inline-block border-white-400 pt-4">
-            <div className="md:float-left block">
+    <div >
+        <div >
+            <div className='header'>
                 <Link href="/">
-                    <span className="cursor-pointer font-bold text-4xl text-white">
+                    <span >
                 <Image 
                     width={210}
                     height={100}
@@ -24,15 +21,7 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
-            {/* <div className="hidden md:float-left md:contents">
-                {categories.map((category) => (
-                    <Link key={category.slug} href={`${category.slug}`}>
-                        <span className="md:float-right mt-8 align-middle text-white ml-4 font-semibold cursor-pointer">
-                            {category.name}
-                        </span>
-                    </Link>
-                ))}
-            </div> */}
+          
         </div>
 
     </div>

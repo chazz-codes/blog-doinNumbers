@@ -25,7 +25,7 @@ export default function Home({ allPostsData }) {
         contact me via <a href='mailto:chazz@doinnumbers.com'>email</a>
         </p>
       </section>
-      <section>
+      <section className='Blog-Main'>
         <h2>Blog</h2>
         <ul>
           {allPostsData.map(({ id, date, title }) => (
