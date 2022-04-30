@@ -1,8 +1,4 @@
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html,
@@ -16,9 +12,9 @@ body {
     content: "";
     width: 100%;
     height: 100vh;
-    //background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
+    
     background: #18181B;
-    // background-image: url("../public/bg.jpg");
+    margin: 0 auto;
     position: fixed;
     left: 0;
     top: 0;
@@ -28,6 +24,28 @@ body {
     background-size: cover;
     
   }
+}
+
+.homeBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qotd {
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+ 
+  
+  min-width: 80vw;
+ 
+}
+
+.blogFeed {
+  justify-self: center;
+  align-self: center;
 }
 
 .articleBox {
@@ -108,7 +126,7 @@ body {
 }
 
 a {
-  color: #d2e1f3;
+  color: #b71dfe;
   text-decoration: none;
 }
 
