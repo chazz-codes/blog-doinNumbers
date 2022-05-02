@@ -61,7 +61,7 @@ export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
           </section>
           <div className="graphCMSPosts">
               {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt}) => (
-                // <li key={id}> {title} </li>
+               
                 <div className='postPreview' key={id}> 
                   <Image
                     className='postPreviewImage'
