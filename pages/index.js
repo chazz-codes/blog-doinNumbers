@@ -4,15 +4,14 @@ import { getSortedPostsData } from '../lib/posts'
 import { fetchData } from '../lib/quotes'
 import Link from 'next/link'
 import Date from '../components/date'
-import axios from 'axios';
-import { useEffect, useState } from 'react'
+import Image from 'next/image'
+
 import { getGraphCMS } from '../lib/graphcms'
 
 export async function getStaticProps(){
   const allPostsData = getSortedPostsData();
   const quotesData = await fetchData()
   const graphCMSPosts = await (await getGraphCMS()).props.posts;
-  console.log(graphCMSPosts)
   
 
   return {
@@ -60,12 +59,36 @@ export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
               ))}
             </ul>
           </section>
-          {/* <div className="graphCMSPosts">
-              {graphCMSPosts.map(({id, title, featuredImage}) => (
-                <li key={id}> {title} </li>
+          <div className="graphCMSPosts">
+              {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt}) => (
+                // <li key={id}> {title} </li>
+                <div className='postPreview' key={id}> 
+                  <Image
+                    className='postPreviewImage'
+                    alt="Next.js logo"
+                    src={featuredImage.url}
+                    width="200%"
+                    height="200%"
+                    
+                  />
+                  <br/>
+                  <div className='postPreviewText'>
+                    <h2> {title}</h2> 
+                    <small>
+
+                    {publishedAt} <br/>
+                    </small>
+                    <br/>
+                    {excerpt} <br/> <br/>
+                    <Link href={`/blog/${slug}`}>
+                    <a> → Read More →</a>
+                    </Link>
+                  </div>
+
+                </div>
               ))}
-          </div> */}
         </div>
+      </div>
       </div>
     </Layout>
   )
