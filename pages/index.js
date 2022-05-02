@@ -1,11 +1,4 @@
-// Homepage
-
-// Imports
 import Head from 'next/head'
-<<<<<<< Updated upstream
-import { PostCard, Categories, PostWidget } from '../components'
-import { getPosts } from '../services'
-=======
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import { fetchData } from '../lib/quotes'
@@ -13,30 +6,31 @@ import Link from 'next/link'
 import Date from '../components/date'
 import { getGraphCMS } from '../lib/graphcms'
 import Image from 'next/image'
->>>>>>> Stashed changes
 
-// Content
+export async function getStaticProps(){
+  const allPostsData = getSortedPostsData();
+  const quotesData = await fetchData()
+  const graphCMSPosts = await (await getGraphCMS()).props.posts;
+  console.log(graphCMSPosts)
+  
 
-/* Summary -> {
-  title of blog in tab header
-  map over posts object to populate PostCard widget posts.length amount of times
-  populate PostWidget and Categories for enhanced navigation
+  return {
+    props: {
+      allPostsData, 
+      quotesData,
+      graphCMSPosts
+    }
+  }
 }
-*/
-export default function Home({ posts }) {
+
+export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
+ 
   return (
-    <div className="container mx-auto px-10 mb-8 ">
-      <Head> 
-        <title>doinNumbers</title>
-        <link rel="icon" href="/favicon.ico" />
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+
       </Head>
-<<<<<<< Updated upstream
-    <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
-     <div className="lg:col-span-8 col-span-1">
-        {posts.map((post,index) => (
-        <PostCard post={post.node} key={post.title}/>
-      ))}
-=======
       <div className="homeBody">
         <div className="qotd">
           <h2>Quote of the Day</h2>
@@ -95,25 +89,7 @@ export default function Home({ posts }) {
               ))}
           </div>
         </div>
->>>>>>> Stashed changes
       </div>
-    <div className="lg:col-span-4 col-span-1">
-          <div className="lg:sticky relative top-8">
-            <PostWidget />
-            <Categories />
-          </div>
-      </div>
-    </div>
-      
-    </div>
+    </Layout>
   )
-}
-// static site generation using API response from getPosts() to gather posts 
-// and assign {posts} as a prop to the Home function
-export async function getStaticProps(){
-  const posts = (await getPosts() || []);
-
-  return {
-    props: { posts }
-  }
 }
