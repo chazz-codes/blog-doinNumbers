@@ -77,7 +77,7 @@ export default function Blog({ posts }){
             <div className="articleBox">
                 {posts[0].excerpt}
                 {posts[0].slug}
-                <ReactMarkdown children={posts[0].content.markdown} remarkPlugins={[Gfm]}/>
+                <ReactMarkdown remarkPlugins={[Gfm]}>{posts[0].content.markdown}</ReactMarkdown>
             </div>
         </Layout>
     )
