@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "../../components/layout";
 import { GraphQLClient } from 'graphql-request'
 import ReactMarkdown from "react-markdown";
+import Gfm from 'remark-gfm'
 
 const graphcms = new GraphQLClient(
     'https://api-us-east-1.graphcms.com/v2/ckyn95gp10hl001w5483vesiu/master'
@@ -76,7 +77,7 @@ export default function Blog({ posts }){
             <div className="articleBox">
                 {posts[0].excerpt}
                 {posts[0].slug}
-                <ReactMarkdown children={posts[0].content.markdown}/>
+                <ReactMarkdown children={posts[0].content.markdown} remarkPlugins={[Gfm]}/>
             </div>
         </Layout>
     )
