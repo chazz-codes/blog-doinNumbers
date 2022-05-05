@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
+import Contact from './Contact';
 
 const Header = () => {
-    const [categories, setCategories] = useState([])
 
    
 
@@ -21,7 +21,7 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
-          
+            <Contact />
         </div>
 
     </div>
