@@ -4,6 +4,14 @@ import Layout from "../../components/layout";
 import { GraphQLClient } from 'graphql-request'
 import ReactMarkdown from "react-markdown";
 import Gfm from 'remark-gfm'
+import matter from 'gray-matter'
+import {remark} from 'remark'
+import html from 'remark-html'
+import { RichText } from '@graphcms/rich-text-react-renderer';
+
+
+
+
 
 const graphcms = new GraphQLClient(
     'https://api-us-east-1.graphcms.com/v2/ckyn95gp10hl001w5483vesiu/master'
@@ -30,6 +38,8 @@ export async function getStaticProps( context ){
               }
               content {
                 markdown
+                html
+                raw
               }
               author {
                 id
@@ -47,10 +57,20 @@ export async function getStaticProps( context ){
             slug: context.params.slug
         }
     );
-
+      
+    
+    const matterResult = await matter(await posts[0].content.markdown)
+    const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content)
+    
+    const contentHtml = await processedContent.toString()
+    
+    
     return {
         props: {
-            posts
+            posts,
+            contentHtml
         }
     }
 }
@@ -67,8 +87,11 @@ export async function getStaticPaths(){
     }
 }
 
-export default function Blog({ posts }){
-  
+export default function Blog({ posts, contentHtml }){
+    
+    
+
+
     return (
         <Layout>
             <Head>
@@ -77,7 +100,7 @@ export default function Blog({ posts }){
             <div className="articleBox">
                 {posts[0].excerpt}
                 {posts[0].slug}
-                <ReactMarkdown remarkPlugins={[Gfm]}>{posts[0].content.markdown}</ReactMarkdown>
+            <RichText content={posts[0].content.raw}/>
             </div>
         </Layout>
     )

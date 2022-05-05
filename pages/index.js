@@ -1,29 +1,27 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
 import { fetchData } from '../lib/quotes'
 import Link from 'next/link'
-import Date from '../components/date'
+import moment from 'moment'
 import Image from 'next/image'
 
 import { getGraphCMS } from '../lib/graphcms'
 
 export async function getStaticProps(){
-  const allPostsData = getSortedPostsData();
   const quotesData = await fetchData()
   const graphCMSPosts = await (await getGraphCMS()).props.posts;
   
 
   return {
     props: {
-      allPostsData, 
       quotesData,
       graphCMSPosts
     }
   }
 }
 
-export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
+export default function Home({ quotesData, graphCMSPosts }) {
+
  
   return (
     <Layout home>
@@ -43,22 +41,7 @@ export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
             </p>
             
           </section>
-          <section className='Blog-Main'>
-            <h2>Blog</h2>
-            <ul>
-              {allPostsData.map(({ id, date, title }) => (
-                <li key={id}>
-                <Link href={`/posts/${id}`}>
-                  <a>{title}</a>
-                </Link>
-                <br />
-                <small >
-                  <Date dateString={date} />
-                </small>
-              </li>
-              ))}
-            </ul>
-          </section>
+         
           <div className="graphCMSPosts">
               {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt}) => (
                
@@ -76,7 +59,7 @@ export default function Home({ allPostsData, quotesData, graphCMSPosts }) {
                     <h2> {title}</h2> 
                     <small>
 
-                    {publishedAt} <br/>
+                    {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                     </small>
                     <br/>
                     {excerpt} <br/> <br/>

@@ -22,6 +22,7 @@ export async function getStaticPaths(){
 }
 
 export default function Post({ postData }) {
+  console.log(postData)
     return (
       <Layout>
         <Head>
