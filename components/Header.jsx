@@ -21,7 +21,7 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
-            <Contact />
+            {/* <Contact /> */}
         </div>
 
     </div>
