@@ -5,11 +5,12 @@ import Contact from './Contact';
 
 const Header = () => {
 
-   
+   const [clicked, setClicked] = useState(false)
 
   return (
     <div >
-        <div >
+        <div className="header-container">
+            <div></div>
             <div className='header'>
                 <Link href="/">
                     <span >
@@ -21,7 +22,13 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
-            {/* <Contact /> */}
+            {/* <div className="header-button-container">
+                <button onClick={() => setClicked(true)} className="contact"> Contact </button>
+                <Contact 
+                    onClose={() => setClicked(false)}
+                    show = {clicked}  
+                />
+            </div> */}
         </div>
 
     </div>

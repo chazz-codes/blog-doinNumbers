@@ -4,6 +4,7 @@ import styles from './layout.module.css'
 import Link from 'next/link'
 import previewImage from '../public/images/preview-img.png'
 import Header from './Header'
+import Footer from './Footer'
 
 const name = 'Chazz'
 export const siteTitle = 'doinNumbers'
@@ -36,6 +37,7 @@ export default function Layout({ children, home }) {
           </Link>
         </div>
       )}
+      <Footer />
     </div>
   )
 }

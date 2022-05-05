@@ -4,7 +4,6 @@ import { fetchData } from '../lib/quotes'
 import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
-
 import { getGraphCMS } from '../lib/graphcms'
 
 export async function getStaticProps(){
@@ -41,30 +40,29 @@ export default function Home({ quotesData, graphCMSPosts }) {
             </p>
             
           </section>
-         
+          <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
           <div className="graphCMSPosts">
               {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt}) => (
                
                 <div className='postPreview' key={id}> 
-                  <Image
-                    className='postPreviewImage'
-                    alt="Next.js logo"
-                    src={featuredImage.url}
-                    width="200%"
-                    height="200%"
-                    
-                  />
+                  <div className='postPreviewImage'>
+                    <Image
+                      alt="Next.js logo"
+                      src={featuredImage.url}
+                      width={210}
+                      height={210}
+                    />
+                  </div>
                   <br/>
                   <div className='postPreviewText'>
                     <h2> {title}</h2> 
                     <small>
-
-                    {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
+                      {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                     </small>
                     <br/>
                     {excerpt} <br/> <br/>
                     <Link href={`/blog/${slug}`}>
-                    <a> → Read More →</a>
+                      <a> → Read More →</a>
                     </Link>
                   </div>
 
@@ -74,5 +72,6 @@ export default function Home({ quotesData, graphCMSPosts }) {
       </div>
       </div>
     </Layout>
+
   )
 }
