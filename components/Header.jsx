@@ -22,13 +22,13 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
-            <div className="header-button-container">
+            {/* <div className="header-button-container">
                 <button onClick={() => setClicked(true)} className="contact"> Contact </button>
                 <Contact 
                     onClose={() => setClicked(false)}
                     show = {clicked}  
                 />
-            </div>
+            </div> */}
         </div>
 
     </div>
