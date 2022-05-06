@@ -7,6 +7,7 @@ body {
   // font-family: Arial, Helvetica, sans-serif;
   font-family: 'Courier Prime', monospace;
   color: white;
+  z-index: 0;
   &:before{
     content:'';
     content: "";
@@ -169,6 +170,7 @@ body {
 
 .header {
   display: flex;
+  z-index: 1;
   width: fit-content;
   align-items: center;
   align-content: center;
@@ -218,4 +220,16 @@ a:hover {
 
 * {
   box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  width: 50%;
+  background-color: orange;
+  height: 500px;
+  z-index: 2;
+  top: 30%;
+  left: 25%;
+  transition: width 2s, height 2s;
+  transition-duration: 2s;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Form from './Form';
 
 const Contact = ({show, onClose}) => {
     const handleClose = (e) => {
@@ -7,8 +8,8 @@ const Contact = ({show, onClose}) => {
     }
     const [isVisible, setVisible] = useState(false);
 
-    return <div>{show ? <div>Chazz
-        <a href="#" onClick={handleClose}>x</a>
+    return <div>{show ? <div >
+        <Form func = {handleClose} /> 
     </div> : null}</div>
 }
 
