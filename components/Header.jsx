@@ -23,7 +23,7 @@ const Header = () => {
                 </Link>
             </div>
             {/* <div className="header-button-container">
-                <button onClick={() => setClicked(true)} className="contact"> Contact </button>
+                <button onClick={clicked ? () => setClicked(false) : () => setClicked(true)} className="contact"> Contact </button>
                 <Contact 
                     onClose={() => setClicked(false)}
                     show = {clicked}  

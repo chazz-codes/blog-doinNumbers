@@ -9,7 +9,7 @@ const Footer = () => {
 
         </div>
         <div className="test3">
-        Copyright © 2022 doinNumbers
+        Copyright © 2022 doinNumbers | Built with Next.js
 
         </div>
     </div>
