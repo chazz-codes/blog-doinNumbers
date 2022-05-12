@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser'
 
 
 
-function Form({func}) {
+function Form() {
   const form = useRef();
   const [sendStatus, setSendStatus] = useState(false)
   
@@ -23,30 +23,34 @@ function Form({func}) {
 
 
   return (
-    <div className="modal">
-        {/* <a href="#" onClick={func}><b>x</b></a> */}
+    <div >
         {sendStatus ? 
           <div> Sent!
           </div> :
           <div>
             <form ref={form} onSubmit={sendEmail}>
               <div className="form">
-                <div className="upper-form">
-                  <div className="nameEmail">
-                    <label>Name</label> <br/>
+                  <div className="col-25">
+                    <label>Name</label> 
+                  </div>
+                  <div className="col-75">
                     <input type="text" name="from_name" />
                   </div>
-                  <div className="nameEmail">
-                    <label>Email</label> <br/>
+                  <div className="col-25">
+                    <label>Email</label> 
+                  </div>
+                  <div className="col-75">
                     <input type="email" name="user_email" />
                   </div>
-                </div>
-                  <br/>
-                <div className="text-space">
-                  <label>Message</label> <br/>
-                  <textarea name="message" /> <br/>
-                  <input type="submit" value="Send" />
-                </div>
+                  <div className="col-25">
+                    <label>Message</label> <br/>
+                  </div>
+                  <div className="col-75">
+                    <textarea name="message" /> <br/>
+                  </div>
+                  <div className="row">
+                    <input type="submit" value="Send" />
+                  </div>
               </div>
             </form>
           </div>}  

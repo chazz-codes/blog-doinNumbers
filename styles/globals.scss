@@ -188,6 +188,19 @@ body {
 button {
   font-family: 'Courier Prime', monospace;
   font-size: 1em;
+  background-color: #18181B;
+  border: none;
+  color: white;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+button:hover{
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition-duration: 0.8s;
 }
 .header-button-container {
   padding: 2em;
@@ -197,24 +210,7 @@ button {
   min-height: fit-content;
 }
 
-.contact {
-  border: none;
-  background-color:#18181B;
-  color: white;
-  text-align: center;
-  padding: .5em;
-  transition-duration: 0.8s;
-}
 
-.contact:hover {
-  background-color: white;
-  color:black;
-  cursor: pointer;
-}
-
-.contact:focus{
-  background-color: #1d77fe;
-}
 
 
 
@@ -231,73 +227,132 @@ a:hover {
   box-sizing: border-box;
 }
 
+
+
+
+@keyframes animateTop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity:1}
+}
+
+
 .modal {
+  display: none;
   position: fixed;
-  width: 50%;
-  background-color: rgb(252, 43, 43);
-  height: 500px;
   z-index: 2;
-  top: 20%;
-  left: 25%;
-  animation: showModal 0.3s;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(127, 127, 127, 0.669);
+  animation: animateTop;
+  animation-duration: 0.5s;
+}
+
+.modal-content {
+  background-color: #18181B;
+  margin: 15% auto;
+  padding: 20px;
+  border:none;
+
+  width: 80%;
+  z-index: 3;
   border-radius: 5%;
 }
-
-.form {
+.modal-body{
   display: flex;
-  flex-direction: column;
-  width: 35em;
-  // background-color: rgb(209, 209, 209);
-  padding: 2em;
 }
 
-.upper-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  input {
-    width: 18em;
-  }
+.modal-footer, .modal-header{
+  text-align: center;
+}
+.visible {
+  display: block;
 }
 
-.text-space {
- width: 100%;
- display: flex;
- flex-direction: column;
- align-items: right;
- input {
-   width: 30%;
- }
- input[type=submit]{
-   border: none;
-   background-color: gray;
-   font-family: inherit;
-   font-size: 1em;
-   padding: 1em;
-   color: white;
- }
- input[type=submit]:hover{
-  border: none;
-  background-color: #1d77fe;
-  transition-duration: 0.8s;
+.not {
+  display: none;
 }
 
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(58, 121, 239);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input[type=text],
+input[type=email],
+textarea{
+  width: 100%;
+  padding: 12px;
+  resize: vertical;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 textarea{
-  width: 100%;
   height: 20em;
 }
-@keyframes showModal {
-  0%{
-    opacity: 0;
-  }
 
-  100%{
-    opacity: 100;
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  border: none;
+  cursor: pointer;
+  float: right;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family:inherit;
+  font-weight: 600;
+ 
+}
+
+.form{
+  border-radius: 5px;
+  padding: 20px;
+ 
+  width: 100%;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row::after{
+  content:"";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px){
+  .col-25, .col-75, input[type=submit]{
+    width: 100%;
+    margin-top: 0;
+  }
+  textarea {
+    height: 10em;
+  }
+  .header-button-container{
+    display: none;
   }
 }
