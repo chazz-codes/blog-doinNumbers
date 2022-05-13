@@ -99,7 +99,7 @@ export default function Blog({ posts, contentHtml }){
             </Head>
             <div className="articleBox">
                 {posts[0].excerpt}
-                {posts[0].slug}
+                
             <RichText content={posts[0].content.raw}/>
             </div>
         </Layout>

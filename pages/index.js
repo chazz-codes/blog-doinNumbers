@@ -35,10 +35,12 @@ export default function Home({ quotesData, graphCMSPosts }) {
         </div>
         <div className="blogFeed">
           <section>
+            <br/>
             <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
             contact me via <a href='mailto:chazz@doinnumbers.com'>email</a>
             </p>
-            
+            <br/>
+            <br/>
           </section>
           <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
           <div className="graphCMSPosts">
@@ -60,7 +62,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
                       {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                     </small>
                     <br/>
-                    {excerpt} <br/> <br/>
+                     <br/> <br/>
                     <Link href={`/blog/${slug}`}>
                       <a> → Read More →</a>
                     </Link>
