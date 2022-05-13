@@ -9,7 +9,11 @@ import Footer from './Footer'
 const name = 'Chazz'
 export const siteTitle = 'doinNumbers'
 
+
 export default function Layout({ children, home }) {
+
+  console.log(previewImage.src)
+
   return (
     <div >
       <Head>
@@ -19,11 +23,11 @@ export default function Layout({ children, home }) {
       <link rel="manifest" href="/site.webmanifest"/>
         <meta
           name="description"
-          content={previewImage}
+          content="Coding, Career, and Life"
         />
         <meta
           property="og:image"
-          content={previewImage}
+          content={previewImage.src}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
