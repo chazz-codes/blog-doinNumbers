@@ -155,6 +155,7 @@ body {
   .postPreviewText{
     padding-left: 0;
     text-align: center;
+    width: 60%;
   }
   .postPreview{
     flex-direction: column;
@@ -386,4 +387,8 @@ input[type=submit] {
   .header-button-container{
     width: 100%;
   }
+}
+
+#postimg {
+  margin: 0 auto;
 }

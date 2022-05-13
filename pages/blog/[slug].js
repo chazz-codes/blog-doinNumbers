@@ -2,13 +2,11 @@ import { getGraphCMS } from "../../lib/graphcms";
 import Head from "next/head";
 import Layout from "../../components/layout";
 import { GraphQLClient } from 'graphql-request'
-import ReactMarkdown from "react-markdown";
-import Gfm from 'remark-gfm'
 import matter from 'gray-matter'
 import {remark} from 'remark'
 import html from 'remark-html'
 import { RichText } from '@graphcms/rich-text-react-renderer';
-
+import Image from "next/image";
 
 
 
@@ -95,11 +93,18 @@ export default function Blog({ posts, contentHtml }){
     return (
         <Layout>
             <Head>
-                <title>{posts[0].title}</title>
+                <title>{posts[0].title} | doinNumbers</title>
             </Head>
             <div className="articleBox">
-                {posts[0].excerpt}
-                
+                {posts[0].excerpt} <br/>
+                <div id="postimg">
+                    <Image 
+                        alt="Next.js logo"
+                        src={posts[0].featuredImage.url}
+                        width={210}
+                        height={210}
+                    />
+                </div>
             <RichText content={posts[0].content.raw}/>
             </div>
         </Layout>

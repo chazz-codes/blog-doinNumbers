@@ -62,6 +62,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
                       {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                     </small>
                     <br/>
+                    
                      <br/> <br/>
                     <Link href={`/blog/${slug}`}>
                       <a> → Read More →</a>

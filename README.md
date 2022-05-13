@@ -1,34 +1,125 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# doinNumbers
+## A blog by Chazz J. 
 
-## Getting Started
 
-First, run the development server:
+doinNumbers is a blog meant to demonstrate and chronicle my learnings in technology.
 
-```bash
-npm run dev
-# or
-yarn dev
+I started learning how to code in 2021. This shall be a living document of my journey. 
+
+
+
+## Technologies Included
+
+- Next.js
+- Next/Image
+- Next/RichText
+- GraphCMS
+- Quote of the Day API
+- FontAwesome
+- Emailjs
+- Moment
+- CSS3
+- Adobe Illustrator
+- Hosting with Vercel
+- Custom Domain from Google
+- Personalized Email for Site
+
+In this blog project, I also included certain features to show what I know
+ 
+ - Modal
+ - Form Submission
+ - Animation
+ - Flexbox
+ - Responsive Design using Media Queries
+ - Interaction with 3rd Party API
+ - Interaction with GraphCMS Database
+ - Server-side Rendering
+ - Model View Controller Design
+ - Conditional Rendering
+ - Dynamic Routes
+
+
+Project Background
+> Originally wanted to do this project in August 2021 but honestly lacked the knowledge of how to put all my visions together. Had a 5 1/2 month role as an Associate Software Engineer where my entire time was spent learning about Java and Springboot. I've spent time as a graphic designer so my interest in client facing work lead me to desire working on front end technologies a lot more. This project shows a combination of my graphic design know how and what I have been able to teach myself about Next.js.
+
+
+## Details
+### Blog Feed
+The latest posts are grabbed from a GraphCMS database. They are sorted in the query based upon the most recently updated post. 
+Posts are rendered through use of .map on the JSON object returned from my query. 
+```
+  <div className="graphCMSPosts">
+      {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt, createdAt}) => (
+       
+        <div className='postPreview' key={id}> 
+          <div className='postPreviewImage'>
+            <Image
+              alt="Next.js logo"
+              src={featuredImage.url}
+              width={210}
+              height={210}
+            />
+          </div>
+          <br/>
+          <div className='postPreviewText'>
+            <h2> {title}</h2> 
+            <small>
+              {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
+            </small>
+            <br/>
+            
+             <br/> <br/>
+            <Link href={`/blog/${slug}`}>
+              <a> → Read More →</a>
+            </Link>
+          </div>
+
+        </div>
+      ))}
+</div>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Quote of the Day
+Quote of the Day gathers and renders a quote and author. It changes automatically every 24 hours
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
+### Contact Button
+Contact button has animated transitions and renders an animated modal when clicked
+On mobile the contact button is swapped with a burger icon.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+*Burger to be used later as a menu button when more parts are added to site*
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+----
+### Contact Form
+Contact form allows you to send an email directly to me through the website. It checks for errors and won't accept email inputs without "@" included. Renders a success message when message is sent.
 
-## Learn More
+*Future plans include not allowing it to send blank messages.* 
 
-To learn more about Next.js, take a look at the following resources:
+---
+### Logo
+doinNumbers logo made by me :) has been made on merchandise already. The camelCase in the logo is a nod to the influence of coding on my present and future
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Blog Posts
+Each blog post is dynamically routed with a slug gathered from the GraphCMS JSON object. The post itself is rendered using RichText.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Future of this Site**
+In coming weeks the following is planned to be added:
+-- Shop connected to Shopify API
+-- User Authentication & Authorization
+-- Search by Post Category
+-- Featured Post slideshow
+-- Comment on Posts
+-- Improved Metadata, Unique Preview Images for each post
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you read this far... thank you. 
+
+Hopefully one day this platform can be an insipration to the youth to get into coding thus making math & science cool.
+
+We can make an impact at scale with the right knowledge. Thats the definition of doinNumbers. 
+
+Chazz
+doinnumbers.com
