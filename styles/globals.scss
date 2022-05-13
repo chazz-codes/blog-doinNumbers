@@ -262,6 +262,9 @@ a:hover {
 }
 .modal-body{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-footer, .modal-header{
@@ -344,6 +347,11 @@ input[type=submit] {
   clear: both;
 }
 
+.burger{
+  display: none;
+}
+
+
 @media screen and (max-width:600px){
   .col-25, .col-75, input[type=submit]{
     width: 100%;
@@ -352,7 +360,26 @@ input[type=submit] {
   textarea {
     height: 10em;
   }
-  .header-button-container{
+  #modalButton{
     display: none;
+  }
+
+  .burger {
+    padding-top: .5em;
+    font-size: 3em;
+    display: inline;
+    z-index: 1;
+    color: white;
+  }
+}
+
+.left{
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-right: .4em;
+  .header-button-container{
+    width: 100%;
   }
 }

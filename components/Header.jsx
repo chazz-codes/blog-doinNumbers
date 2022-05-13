@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image';
 import Contact from './Contact';
 import Form from './Form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons"
 
 const Header = () => {
 
@@ -18,7 +20,12 @@ const Header = () => {
   return (
     <div >
         <div className="header-container">
-            <div></div>
+            <div className='left'>
+                <a href="#" onClick={toggleClass}>
+                    <FontAwesomeIcon className='burger' icon={faBars} size="1x"/>
+                </a>
+            </div>
+            
             <div className='header'>
                 <Link href="/">
                     <span >
@@ -32,7 +39,7 @@ const Header = () => {
             </div>
             <div className="header-button-container">
                 <button id="modalButton" onClick={toggleClass}>Contact</button>
-                
+
             </div>
             <div className={`modal ${isActive ? "visible" : "not"}`} id="modal">
                 <div className="modal-content">
