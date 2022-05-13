@@ -23,7 +23,7 @@ export default function Layout({ children, home }) {
         />
         <meta
           property="og:image"
-          content="/public/images/preview-img.png"
+          content={previewImage}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />

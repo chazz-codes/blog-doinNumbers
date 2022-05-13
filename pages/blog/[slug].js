@@ -94,6 +94,10 @@ export default function Blog({ posts, contentHtml }){
         <Layout>
             <Head>
                 <title>{posts[0].title} | doinNumbers</title>
+                <meta
+                    property="og:image"
+                    content={posts[0].featuredImage.url}
+                />
             </Head>
             <div className="articleBox">
                 {posts[0].excerpt} <br/> <br/>
