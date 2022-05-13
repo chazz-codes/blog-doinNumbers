@@ -246,8 +246,7 @@ a:hover {
   height: 100%;
   overflow: auto;
   background-color: rgba(127, 127, 127, 0.669);
-  animation: animateTop;
-  animation-duration: 0.5s;
+  
 }
 
 .modal-content {
@@ -272,6 +271,8 @@ a:hover {
 }
 .visible {
   display: block;
+  animation: animateTop;
+  animation-duration: 0.5s;
 }
 
 .not {
