@@ -236,6 +236,8 @@ a:hover {
 }
 
 
+
+
 .modal {
   display: none;
   position: fixed;
@@ -251,7 +253,7 @@ a:hover {
 
 .modal-content {
   background-color: #18181B;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
   border:none;
 
@@ -277,6 +279,7 @@ a:hover {
 
 .not {
   display: none;
+  
 }
 
 .close {

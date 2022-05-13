@@ -42,7 +42,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
           </section>
           <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
           <div className="graphCMSPosts">
-              {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt}) => (
+              {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt, createdAt}) => (
                
                 <div className='postPreview' key={id}> 
                   <div className='postPreviewImage'>
