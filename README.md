@@ -14,6 +14,7 @@ I started learning how to code in 2021. This shall be a living document of my jo
 - Next/Image
 - Next/RichText
 - GraphCMS
+- Webhooks
 - Quote of the Day API
 - FontAwesome
 - Emailjs
@@ -45,7 +46,7 @@ Project Background
 
 ## Details
 ### Blog Feed
-The latest posts are grabbed from a GraphCMS database. They are sorted in the query based upon the most recently updated post. 
+The latest posts are grabbed from a GraphCMS database. They are sorted in the query based upon the most recently updated post. Webhooks push new database entries to the site automatically.
 Posts are rendered through use of .map on the JSON object returned from my query. 
 ```
   <div className="graphCMSPosts">
