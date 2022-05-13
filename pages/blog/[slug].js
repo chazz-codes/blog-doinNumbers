@@ -96,7 +96,7 @@ export default function Blog({ posts, contentHtml }){
                 <title>{posts[0].title} | doinNumbers</title>
             </Head>
             <div className="articleBox">
-                {posts[0].excerpt} <br/>
+                {posts[0].excerpt} <br/> <br/>
                 <div id="postimg">
                     <Image 
                         alt="Next.js logo"
