@@ -5,6 +5,7 @@ import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
 import { getGraphCMS } from '../lib/graphcms'
+import previewImage from '/public/images/preview-img.png'
 
 export async function getStaticProps(){
   const quotesData = await fetchData()
@@ -26,7 +27,10 @@ export default function Home({ quotesData, graphCMSPosts }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
-
+        <meta
+          property="og:image"
+          content={previewImage.src}
+        />
       </Head>
       <div className="homeBody">
         <div className="qotd">

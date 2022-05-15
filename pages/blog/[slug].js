@@ -88,7 +88,6 @@ export async function getStaticPaths(){
 export default function Blog({ posts, contentHtml }){
     
     const img = posts[0].featuredImage.url;
-    console.log(img)
 
 
     return (
@@ -97,7 +96,7 @@ export default function Blog({ posts, contentHtml }){
                 <title>{posts[0].title} | doinNumbers</title>
                 <meta
                     property="og:image"
-                    content={posts[0].featuredImage.url}
+                    content={img}
                 />
             </Head>
             <div className="articleBox">

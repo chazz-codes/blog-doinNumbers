@@ -2,17 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.css'
 import Link from 'next/link'
-import previewImage from '../public/images/preview-img.png'
+
 import Header from './Header'
 import Footer from './Footer'
 
-const name = 'Chazz'
+
 export const siteTitle = 'doinNumbers'
 
 
 export default function Layout({ children, home }) {
-
-  console.log(previewImage.src)
 
   return (
     <div >
@@ -25,10 +23,7 @@ export default function Layout({ children, home }) {
           name="description"
           content="Coding, Career, and Life"
         />
-        <meta
-          property="og:image"
-          content={`"${previewImage.src}"`}
-        />
+        
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
@@ -39,6 +34,8 @@ export default function Layout({ children, home }) {
           <Link href="/">
             <a>← Back to home</a>
           </Link>
+          <img src={previewImage.src}></img>
+          {previewImage.src}
         </div>
       )}
       <Footer />
