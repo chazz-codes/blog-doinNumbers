@@ -34,8 +34,7 @@ export default function Layout({ children, home }) {
           <Link href="/">
             <a>← Back to home</a>
           </Link>
-          <img src={previewImage.src}></img>
-          {previewImage.src}
+
         </div>
       )}
       <Footer />
