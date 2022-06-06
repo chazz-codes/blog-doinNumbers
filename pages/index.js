@@ -6,6 +6,7 @@ import moment from 'moment'
 import Image from 'next/image'
 import { getGraphCMS } from '../lib/graphcms'
 import previewImage from '/public/images/preview-img.png'
+import Categories from '../components/Categories'
 
 export async function getStaticProps(){
   const quotesData = await fetchData()
@@ -28,8 +29,8 @@ export default function Home({ quotesData, graphCMSPosts }) {
       <Head>
         <title>{siteTitle}</title>
         <meta
-          property="og:image"
-          content={previewImage.src}
+          property="og:image" content="https://res.cloudinary.com/doinnumbers/image/upload/v1654539207/preview-img_vr4ldh.png"
+
         />
       </Head>
       <div className="homeBody">
@@ -46,37 +47,45 @@ export default function Home({ quotesData, graphCMSPosts }) {
             <br/>
             <br/>
           </section>
-          <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
-          <div className="graphCMSPosts">
-              {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt, createdAt}) => (
-               
-                <div className='postPreview' key={id}> 
-                  <div className='postPreviewImage'>
-                    <Image
-                      alt="Next.js logo"
-                      src={featuredImage.url}
-                      width={210}
-                      height={210}
-                    />
-                  </div>
-                  <br/>
-                  <div className='postPreviewText'>
-                    <h2> <b>{title}</b></h2> 
-                    <small>
-                      {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
-                    </small>
-                 
+          <div className="main-feed">
+            <div id="post-stream">
+                <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
+                <div className="graphCMSPosts">
+                    {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt, createdAt}) => (
                     
-                     <br/>
-                    <Link href={`/blog/${slug}`}>
-                      <a> → Read More →</a>
-                    </Link>
-                  </div>
+                      <div className='postPreview' key={id}> 
+                        <div className='postPreviewImage'>
+                          <Image
+                            alt="Next.js logo"
+                            src={featuredImage.url}
+                            width={210}
+                            height={210}
+                          />
+                        </div>
+                        <br/>
+                        <div className='postPreviewText'>
+                          <h2> <b>{title}</b></h2> 
+                          <small>
+                            {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
+                          </small>
+                      
+                          
+                          <br/>
+                          <Link href={`/blog/${slug}`}>
+                            <a> → Read More →</a>
+                          </Link>
+                        </div>
 
+                          </div>
+
+                    ))}
                 </div>
-              ))}
+            </div>
+            {/* <div id="categories-stream">
+              <Categories />
+            </div> */}
+          </div>
         </div>
-      </div>
       </div>
     </Layout>
 

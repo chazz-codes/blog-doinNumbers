@@ -29,6 +29,10 @@ body {
   }
 }
 
+.main-feed {
+  display: flex;
+}
+
 .section-title {
   margin-top: 2em;
 }
@@ -78,7 +82,7 @@ body {
   text-align: center;
  
   
-  min-width: 80vw;
+  min-width: 100vw;
  
 }
 
@@ -124,6 +128,13 @@ body {
   
 }
 
+// delete when categories added
+#post-stream {
+  width: 100%;
+}
+
+
+
 @media screen and (max-width: 1200px){
   .articleBox {
     padding-left: 12em;
@@ -161,6 +172,14 @@ body {
   .postPreview{
     flex-direction: column;
     align-items: center;
+  }
+
+  #categories-stream {
+    display: none;
+  }
+
+  #post-stream {
+    width: 100%;
   }
 
 }
