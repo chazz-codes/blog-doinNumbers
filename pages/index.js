@@ -61,13 +61,13 @@ export default function Home({ quotesData, graphCMSPosts }) {
                   </div>
                   <br/>
                   <div className='postPreviewText'>
-                    <h2> {title}</h2> 
+                    <h2> <b>{title}</b></h2> 
                     <small>
                       {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                     </small>
-                    <br/>
+                 
                     
-                     <br/> <br/>
+                     <br/>
                     <Link href={`/blog/${slug}`}>
                       <a> → Read More →</a>
                     </Link>

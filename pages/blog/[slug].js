@@ -100,6 +100,9 @@ export default function Blog({ posts, contentHtml }){
                 />
             </Head>
             <div className="articleBox">
+                <h1>    
+                    {posts[0].title} <br/>
+                </h1>
                 {posts[0].excerpt} <br/> <br/>
                 <div id="postimg">
                     <Image 
@@ -108,6 +111,7 @@ export default function Blog({ posts, contentHtml }){
                         width={210}
                         height={210}
                     />
+                    <br/>
                 </div>
             <RichText content={posts[0].content.raw}/>
             </div>
