@@ -23,25 +23,29 @@ function Form() {
 
 
   return (
-    <div >
+    <div id="modalForm" >
         {sendStatus ? 
           <div> Sent!
           </div> :
           <div>
             <form ref={form} onSubmit={sendEmail}>
               <div className="form">
+                <div className="row">
                   <div className="col-25">
                     <label>Name</label> 
                   </div>
                   <div className="col-75">
                     <input type="text" name="from_name" />
                   </div>
+                </div>
+                <div className="row">
                   <div className="col-25">
                     <label>Email</label> 
                   </div>
                   <div className="col-75">
                     <input type="email" name="user_email" />
                   </div>
+                </div>
                   <div className="col-25">
                     <label>Message</label> <br/>
                   </div>

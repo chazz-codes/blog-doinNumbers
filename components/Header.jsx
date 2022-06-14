@@ -11,7 +11,7 @@ const Header = () => {
    const [isActive, setActive] = useState(false)
 
    
-//    const modal = document.getElementById("modal")
+
    const toggleClass = () => {
        setActive(!isActive)
    }

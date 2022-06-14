@@ -287,6 +287,11 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+#modalForm {
+  width: 100%;
 }
 
 .modal-footer, .modal-header{
@@ -350,7 +355,6 @@ input[type=submit] {
 .form{
   border-radius: 5px;
   padding: 20px;
- 
   width: 100%;
 }
 

@@ -10,7 +10,6 @@ const Contact = ({show, onClose}) => {
         e.preventDefault();
         onClose()
     }
-    const [isVisible, setVisible] = useState(false);
 
     return <div>{show ? <div >
         <Form func = {handleClose} /> 
