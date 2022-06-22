@@ -37,7 +37,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
 
   React.useEffect(()=> {
     
-
+    setWindowWidth(window.innerWidth)
    let handleResize = () => setWindowWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
    
