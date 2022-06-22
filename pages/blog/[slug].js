@@ -8,7 +8,7 @@ import html from 'remark-html'
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Image from "next/image";
 
-
+// Dynamic Route for Blog Posts
 
 
 const graphcms = new GraphQLClient(

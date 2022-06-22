@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
-import Contact from './Contact';
 import Form from './Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons"
+
 
 const Header = () => {
 
@@ -37,6 +37,7 @@ const Header = () => {
                     </span>
                 </Link>
             </div>
+            
             <div className="header-button-container">
                 <button id="modalButton" onClick={toggleClass}>Contact</button>
 

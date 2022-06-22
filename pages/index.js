@@ -1,31 +1,51 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { fetchData } from '../lib/quotes'
+
 import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
 import { getGraphCMS } from '../lib/graphcms'
-import previewImage from '/public/images/preview-img.png'
 import Categories from '../components/Categories'
+
+import React, { useState } from 'react'
+
+// Homepage of doinNumbers Application
+
+
 
 export async function getStaticProps(){
   const quotesData = await fetchData()
   const graphCMSPosts = await (await getGraphCMS()).props.posts;
+ 
   
 
   return {
     props: {
       quotesData,
-      graphCMSPosts
+      graphCMSPosts,
+     
     }
   }
 }
 
 export default function Home({ quotesData, graphCMSPosts }) {
+  
+  const [windowWidth, setWindowWidth] = useState('')
+  
 
+
+  React.useEffect(()=> {
+    
+
+   let handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+   
+  }, [])
  
   return (
     <Layout home>
+      {/* Metadata and Head Details */}
       <Head>
         <title>{siteTitle}</title>
         <meta
@@ -33,11 +53,26 @@ export default function Home({ quotesData, graphCMSPosts }) {
 
         />
       </Head>
+
+        {/* Quote of the Day Section */}
+            <div className="img-bg"></div>
+          <figure className="qotd">
+         
+            <Image
+                src="https://res.cloudinary.com/doinnumbers/image/upload/v1655832942/talkbox_yfjonb.png"
+                width={700 }
+                height={windowWidth > 688 ? 400 :  windowWidth > 520 ? 600 : windowWidth > 400 ? 1000 : windowWidth > 380 ? 1200 : 1400}
+                
+                className="quotebox"
+              /> 
+            <figcaption>
+            <h2>Quote of the Day </h2>
+              <div dangerouslySetInnerHTML={{__html: quotesData[0].h}}/>
+            </figcaption>
+          </figure>
+        
       <div className="homeBody">
-        <div className="qotd">
-          <h2>Quote of the Day</h2>
-          <div dangerouslySetInnerHTML={{__html: quotesData[0].h}}/>
-        </div>
+        {/* Feed of Posts  */}
         <div className="blogFeed">
           <section>
             <br/>
@@ -66,11 +101,13 @@ export default function Home({ quotesData, graphCMSPosts }) {
                         <div className='postPreviewText'>
                           <h2> <b>{title}</b></h2> 
                           <small>
+                            {/* Moment reorganizes the Data into a human readable format */}
                             {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
                           </small>
                       
                           
                           <br/>
+                          {/* Clickable Link to article */}
                           <Link href={`/blog/${slug}`}>
                             <a> → Read More →</a>
                           </Link>

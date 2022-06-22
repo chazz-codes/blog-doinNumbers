@@ -29,6 +29,15 @@ body {
   }
 }
 
+.img-bg {
+  
+  width: 100%;
+  height: 40vh;
+  // background-color: red;
+  position: absolute;
+  // top: 13%;
+}
+
 .main-feed {
   display: flex;
 }
@@ -75,20 +84,33 @@ body {
   align-items: center;
 }
 
+
+
 .qotd {
-  background-color: #9976fd;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
- 
-  
-  min-width: 100vw;
- 
+ display: flex;
+ color: black;
+ flex-direction: column;
+ text-align: center;
+ position: relative;
+ align-items: center;
 }
+.quotebox {
+  position: relative;
+}
+
+.qotd figcaption {
+  position: absolute;
+  top: 20%;
+  max-width: 500px;
+  min-width: 300px;
+}
+
 
 .blogFeed {
   justify-self: center;
   align-self: center;
+  width: 80%;
+  max-width: 1440px;
 }
 
 .articleBox {
@@ -189,6 +211,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   min-height: fit-content;
   justify-items: center;
+  
 }
 
 .header {
