@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { fetchData } from '../lib/quotes'
-
+import useSWR from 'swr'
 import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
@@ -37,17 +37,18 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
   const [quotesData, setQuote] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
+  const fetcher = (...args) => fetch(...args).then((res) => res.json())
   
 
 
 useEffect(()=> {
 
-   fetch("https://zenquotes.io/api/today")
-    .then( (res) => res.json())
-    .then((data) => {
-      setQuote(data)
-      setIsLoading(false)
-    })
+  //  fetch("https://zenquotes.io/api/today")
+  //   .then( (res) => res.json())
+  //   .then((data) => {
+  //     setQuote(data)
+  //     setIsLoading(false)
+  //   })
      
     
   
@@ -61,8 +62,10 @@ useEffect(()=> {
    
   }, [])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!quotesData) return <p>No Quote Data</p>
+  const { data, error } = useSWR('https://zenquotes.io/api/today', fetcher)
+  
+
+ 
  
   return (
     <Layout home>
@@ -88,7 +91,7 @@ useEffect(()=> {
               /> 
             <figcaption>
             <h2>Quote of the Day </h2>
-              <div dangerouslySetInnerHTML={{__html: quotesData[0].h}}/>
+              <div dangerouslySetInnerHTML={{__html: data[0].h}}/>
             </figcaption>
           </figure>
       <div className="shop">
