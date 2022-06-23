@@ -5,7 +5,7 @@ const QuoteofTheDay = () => {
     const fetcher = (...args) => fetch(...args).then((res) => res.json())
     // const { data, error } = useSWR('https://zenquotes.io/api/today', fetcher)
     const {isLoading, setIsLoading} = useState(true)
-    const {quoteData, setQuoteData} = useState(null)
+    const {quoteData, setQuote} = useState(null)
 
 
     useEffect( () => {
@@ -22,7 +22,7 @@ const QuoteofTheDay = () => {
     <React.Fragment>
         <h2>Quote of the Day </h2>
            {isLoading ? <h2>Now Loading...</h2> :
-              <div dangerouslySetInnerHTML={{__html: data[0].h}}/> 
+              <div dangerouslySetInnerHTML={{__html: quoteData[0].h}}/> 
   }
     </React.Fragment>
   )
