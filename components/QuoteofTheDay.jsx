@@ -8,9 +8,8 @@ const QuoteofTheDay = () => {
   return (
     <React.Fragment>
         <h2>Quote of the Day </h2>
-            {data ?
-              <div dangerouslySetInnerHTML={{__html: data[0].h}}/> :
-              <div> Quote Loading ...</div>}
+           
+              <div dangerouslySetInnerHTML={{__html: data[0].h}}/> 
     </React.Fragment>
   )
 }
