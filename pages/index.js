@@ -34,23 +34,24 @@ export async function getStaticProps(){
 export default function Home({ graphCMSPosts, graphCategory, products }) {
   
   const [windowWidth, setWindowWidth] = useState('')
-  const [quotesData, setQuote] = useState({})
-  const quoteInHand = false;
+  const [quotesData, setQuote] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   
 
 
   React.useEffect(()=> {
 
-    let fetchData = async () => {
-      const res = await fetch("https://zenquotes.io/api/today")
-      const data = await res.json()
+   fetch("https://zenquotes.io/api/today")
+    .then( (res) => res.json())
+    .then((data) => {
+      setQuote(data)
+      setIsLoading(false)
+    })
      
-      await setQuote(data)
-      console.log(quotesData)
-    }
+    
   
-    quoteInHand ? null : fetchData()
+
 
     // logic here is necessary for talk bubble responsiveness
 
@@ -59,12 +60,15 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
     window.addEventListener('resize', handleResize)
    
   }, [])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!quotesData) return <p>No Quote Data</p>
  
   return (
     <Layout home>
       {/* Metadata and Head Details */}
       <Head>
-        <title>{siteTitle}</title>
+        <title>{siteTitle +"| "+ quotesData[0].h}</title>
         <meta
           property="og:image" content="https://res.cloudinary.com/doinnumbers/image/upload/v1654539207/preview-img_vr4ldh.png"
 
@@ -85,7 +89,6 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
             <figcaption>
             <h2>Quote of the Day </h2>
               <div dangerouslySetInnerHTML={{__html: quotesData[0].h}}/>
-              {/* {quotesData[0].q} */}
             </figcaption>
           </figure>
       <div className="shop">
