@@ -1,29 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import useSWR from 'swr'
 
-const QuoteofTheDay = () => {
-    const fetcher = (...args) => fetch(...args).then((res) => res.json())
-    // const { data, error } = useSWR('https://zenquotes.io/api/today', fetcher)
-    const {isLoading, setIsLoading} = useState(true)
-    const {quoteData, setQuote} = useState(null)
+const QuoteofTheDay = ({quotes}) => {
+  
 
-
-    useEffect( () => {
-      fetch("https://zenquotes.io/api/today")
-    .then( (res) => res.json())
-    .then((data) => {
-      setQuote(data)
-      setIsLoading(false)
-    })
-}, [])
-
-
+console.log("quotes", quotes)
   return (
     <React.Fragment>
         <h2>Quote of the Day </h2>
-           {isLoading ? <h2>Now Loading...</h2> :
-              <div dangerouslySetInnerHTML={{__html: quoteData[0].h}}/> 
-  }
+        <div dangerouslySetInnerHTML={{__html: quotes.h}}/>
+              
     </React.Fragment>
   )
 }

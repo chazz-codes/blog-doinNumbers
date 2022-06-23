@@ -20,11 +20,14 @@ export async function getStaticProps(){
   const graphCMSPosts = await (await getGraphCMS()).props.posts;
   const products = await (await getGraphCMS()).props.products
   const graphCategory = await (await getGraphCMSCat()).props.categories;
-  
+  const res = await fetch("https://zenquotes.io/api/quotes");
+  const quoteData = await res.json()
+
+
 
   return {
     props: {
-   
+      quoteData,
       graphCMSPosts,
       graphCategory,
       products
@@ -32,28 +35,15 @@ export async function getStaticProps(){
   }
 }
 
-export default function Home({ graphCMSPosts, graphCategory, products }) {
+export default function Home({ quoteData, graphCMSPosts, graphCategory, products }) {
   
   const [windowWidth, setWindowWidth] = useState('')
-  const [quotesData, setQuote] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-
   
-  
+  // store date in variable for use with Quote of the Day Component
+  let today = new Date().getUTCDate()
 
 
 useEffect(()=> {
-
-  //  fetch("https://zenquotes.io/api/today")
-  //   .then( (res) => res.json())
-  //   .then((data) => {
-  //     setQuote(data)
-  //     setIsLoading(false)
-  //   })
-     
-    
-  
-
 
     // logic here is necessary for talk bubble responsiveness
 
@@ -91,7 +81,7 @@ useEffect(()=> {
                 className="quotebox"
               /> 
             <figcaption>
-              <QuoteofTheDay />
+              <QuoteofTheDay date={today} quotes={quoteData[today]}/>
             </figcaption>
           </figure>
       <div className="shop">
