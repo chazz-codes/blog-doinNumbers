@@ -113,7 +113,7 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
               </div>
 
               {/* button logic - snipcart api connection */}
-              <button class="snipcart-add-item"
+              <button className="snipcart-add-item"
                 data-item-id={productSlug}
                 data-item-price={price}
                 data-item-description={description}
