@@ -91,7 +91,9 @@ useEffect(()=> {
               /> 
             <figcaption>
             <h2>Quote of the Day </h2>
-              <div dangerouslySetInnerHTML={{__html: data[0].h}}/>
+            {data ?
+              <div dangerouslySetInnerHTML={{__html: data[0].h}}/> :
+              <div> Quote Loading ...</div>}
             </figcaption>
           </figure>
       <div className="shop">
