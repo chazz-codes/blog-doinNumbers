@@ -20,7 +20,7 @@ const Categories = ({choices}) => {
           </h1>
           <ul>
             {choices.map( ({name, slug}) => (
-              <li>
+              <li key={slug}>
                <Link href={slug}>
                 <a> 
                   <h3>
