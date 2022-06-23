@@ -9,36 +9,53 @@ import { getGraphCMS } from '../lib/graphcms'
 import Categories from '../components/Categories'
 
 import React, { useState } from 'react'
+import { getGraphCMSCat } from '../lib/getcategories'
 
 // Homepage of doinNumbers Application
 
 
-
 export async function getStaticProps(){
-  const quotesData = await fetchData()
+
   const graphCMSPosts = await (await getGraphCMS()).props.posts;
- 
+  const products = await (await getGraphCMS()).props.products
+  const graphCategory = await (await getGraphCMSCat()).props.categories;
   
 
   return {
     props: {
-      quotesData,
+   
       graphCMSPosts,
-     
+      graphCategory,
+      products
     }
   }
 }
 
-export default function Home({ quotesData, graphCMSPosts }) {
+export default function Home({ graphCMSPosts, graphCategory, products }) {
   
   const [windowWidth, setWindowWidth] = useState('')
+  const [quotesData, setQuote] = useState({})
+  const quoteInHand = false;
+
   
 
 
   React.useEffect(()=> {
-    
+
+    let fetchData = async () => {
+      const res = await fetch("https://zenquotes.io/api/today")
+      const data = await res.json()
+     
+      await setQuote(data)
+      console.log(quotesData)
+    }
+  
+    quoteInHand ? null : fetchData()
+
+    // logic here is necessary for talk bubble responsiveness
+
     setWindowWidth(window.innerWidth)
-   let handleResize = () => setWindowWidth(window.innerWidth)
+    let handleResize = () => setWindowWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
    
   }, [])
@@ -57,7 +74,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
         {/* Quote of the Day Section */}
             <div className="img-bg"></div>
           <figure className="qotd">
-         
+         {/* talk cloud logic, resizes proportions based on screensize */}
             <Image
                 src="https://res.cloudinary.com/doinnumbers/image/upload/v1655832942/talkbox_yfjonb.png"
                 width={700 }
@@ -68,9 +85,47 @@ export default function Home({ quotesData, graphCMSPosts }) {
             <figcaption>
             <h2>Quote of the Day </h2>
               <div dangerouslySetInnerHTML={{__html: quotesData[0].h}}/>
+              {/* {quotesData[0].q} */}
             </figcaption>
           </figure>
-        
+      <div className="shop">
+        {/* map render products (from graphCMS)  */}
+        {products.map(({name, image, price, description, productSlug}) => (
+          <div key={productSlug}>
+              <h1>{name}</h1>
+              <Image
+                src={image[0].url}
+                height={300}
+                width={300}
+              />
+              <h4>${price}</h4>
+              <div> Size 
+                <select>
+                  <option value="S"> S </option>
+                  <option value="M"> M </option>
+                  <option value="L"> L </option>
+                  <option value="XL"> XL </option>
+                  <option value="2XL"> 2XL </option>
+                </select>
+              </div>
+
+              {/* button logic - snipcart api connection */}
+              <button class="snipcart-add-item"
+                data-item-id={productSlug}
+                data-item-price={price}
+                data-item-description={description}
+                data-item-image={image[0].url}
+                data-item-name={name}
+                data-item-custom1-name="Size"
+                data-item-custom1-options="Small|Medium|Large|XL|XXL"
+                data-item-custom1-value="Brown" 
+                data-item-stackable="never"
+                >
+                Add to cart
+              </button>
+          </div>
+        ))}
+      </div>
       <div className="homeBody">
         {/* Feed of Posts  */}
         <div className="blogFeed">
@@ -86,6 +141,7 @@ export default function Home({ quotesData, graphCMSPosts }) {
             <div id="post-stream">
                 <div className="section-title"> <h1><span>Latest Posts</span></h1></div>
                 <div className="graphCMSPosts">
+                  {/* map render blog posts */}
                     {graphCMSPosts.map(({id, title, featuredImage, slug, publishedAt, excerpt, createdAt}) => (
                     
                       <div className='postPreview' key={id}> 
@@ -118,9 +174,10 @@ export default function Home({ quotesData, graphCMSPosts }) {
                     ))}
                 </div>
             </div>
-            {/* <div id="categories-stream">
-              <Categories />
-            </div> */}
+            <div id="categories-stream">
+              {/* blog categories passed to categories component as 'choices' prop */}
+              {/* <Categories choices={graphCategory} /> */}
+            </div>
           </div>
         </div>
       </div>

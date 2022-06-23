@@ -1,43 +1,36 @@
 // Post Categories
 import React from 'react'
-import { getBlogCategories } from '../lib/getcategories'
-import { GraphQLClient, gql } from 'graphql-request' 
+import Link from 'next/link'
 
 
-export async function getStaticProps(){
-  const graphcms = new GraphQLClient(
-    'https://api-us-east-1.graphcms.com/v2/ckyn95gp10hl001w5483vesiu/master'
-)
 
-  const { categories } = await graphcms.request(
-    gql`
-    {
-        categories {
-          name
-          slug
-        }
-      }
-      
-    `
-  )
 
-  return {
-    props: {
-      categories
-    }
-  }
-}
 
-const Categories = ({categories}) => {
 
-  console.log(categories)
+
+const Categories = ({choices}) => {
+
 
   return (
     <React.Fragment>
       <div className="section-title">
+       
           <h1>  
             <span> Categories </span>
           </h1>
+          <ul>
+            {choices.map( ({name, slug}) => (
+              <li>
+               <Link href={slug}>
+                <a> 
+                  <h3>
+                    #{name} 
+                  </h3>
+                </a>
+               </Link>
+              </li>
+            ))}
+          </ul>
       </div>
 
     </React.Fragment>
@@ -45,3 +38,4 @@ const Categories = ({categories}) => {
 }
 
 export default Categories
+
