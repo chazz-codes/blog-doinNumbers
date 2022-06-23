@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { fetchData } from '../lib/quotes'
-import useSWR from 'swr'
+
 import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
@@ -10,6 +10,7 @@ import Categories from '../components/Categories'
 
 import React, { useState, useEffect } from 'react'
 import { getGraphCMSCat } from '../lib/getcategories'
+import { QuoteofTheDay } from '../components'
 
 // Homepage of doinNumbers Application
 
@@ -37,7 +38,7 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
   const [quotesData, setQuote] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const fetcher = (...args) => fetch(...args).then((res) => res.json())
+  
   
 
 
@@ -62,7 +63,7 @@ useEffect(()=> {
    
   }, [])
 
-  const { data, error } = useSWR('https://zenquotes.io/api/today', fetcher)
+  
   
 
  
@@ -90,10 +91,7 @@ useEffect(()=> {
                 className="quotebox"
               /> 
             <figcaption>
-            <h2>Quote of the Day </h2>
-            {data ?
-              <div dangerouslySetInnerHTML={{__html: data[0].h}}/> :
-              <div> Quote Loading ...</div>}
+              <QuoteofTheDay />
             </figcaption>
           </figure>
       <div className="shop">
