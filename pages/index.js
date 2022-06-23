@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { getGraphCMS } from '../lib/graphcms'
 import Categories from '../components/Categories'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getGraphCMSCat } from '../lib/getcategories'
 
 // Homepage of doinNumbers Application
