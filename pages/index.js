@@ -40,7 +40,7 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
   
 
 
-  React.useEffect(()=> {
+useEffect(()=> {
 
    fetch("https://zenquotes.io/api/today")
     .then( (res) => res.json())
@@ -68,7 +68,7 @@ export default function Home({ graphCMSPosts, graphCategory, products }) {
     <Layout home>
       {/* Metadata and Head Details */}
       <Head>
-        <title>{siteTitle +"| "+ quotesData[0].h}</title>
+        <title>{siteTitle}</title>
         <meta
           property="og:image" content="https://res.cloudinary.com/doinnumbers/image/upload/v1654539207/preview-img_vr4ldh.png"
 
