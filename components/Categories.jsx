@@ -13,7 +13,7 @@ const Categories = ({choices}) => {
 
   return (
     <React.Fragment>
-      <div className="section-title">
+      <div className="blog-categories">
        
           <h1>  
             <span> Categories </span>
@@ -21,7 +21,7 @@ const Categories = ({choices}) => {
           <ul>
             {choices.map( ({name, slug}) => (
               <li key={slug}>
-               <Link href={slug}>
+               <Link href={`/blog/categories/${slug}`}>
                 <a> 
                   <h3>
                     #{name} 

@@ -1,6 +1,7 @@
 
 import React from 'react'
 import '../styles/globals.scss'
+import { SnipcartProvider } from 'use-snipcart/useSnipcart'
  
 
 
@@ -8,11 +9,11 @@ import '../styles/globals.scss'
 export default function MyApp({ Component, pageProps }) {
   return (
   
-      <React.Fragment>
+     <SnipcartProvider>
           
           <Component {...pageProps} />
         
-      </React.Fragment>
+      </SnipcartProvider>
    
   ) 
 }

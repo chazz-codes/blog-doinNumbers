@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { fetchData } from '../lib/quotes'
 
+
 import Link from 'next/link'
 import moment from 'moment'
 import Image from 'next/image'
@@ -11,6 +12,8 @@ import Categories from '../components/Categories'
 import React, { useState, useEffect } from 'react'
 import { getGraphCMSCat } from '../lib/getcategories'
 import { QuoteofTheDay } from '../components'
+
+import { printful } from '../lib/printful-client'
 
 // Homepage of doinNumbers Application
 
@@ -22,6 +25,7 @@ export async function getStaticProps(){
   const graphCategory = await (await getGraphCMSCat()).props.categories;
   const res = await fetch("https://zenquotes.io/api/quotes");
   const quoteData = await res.json()
+  // const { result } = await printful.get("products")
 
 
 
@@ -84,44 +88,45 @@ useEffect(()=> {
               <QuoteofTheDay date={today} quotes={quoteData[today]}/>
             </figcaption>
           </figure>
+      <div className="shop-banner" > </div>
+      <div className="shop-banner" id="shop-banner"> </div>
+      <div className="shop-banner" id="shop-banner" > SHOP </div>
+      
       <div className="shop">
         {/* map render products (from graphCMS)  */}
         {products.map(({name, image, price, description, productSlug}) => (
-          <div key={productSlug}>
-              <h1>{name}</h1>
+          <div key={productSlug} className="productBox">
               <Image
                 src={image[0].url}
                 height={300}
                 width={300}
               />
-              <h4>${price}</h4>
-              <div> Size 
-                <select>
-                  <option value="S"> S </option>
-                  <option value="M"> M </option>
-                  <option value="L"> L </option>
-                  <option value="XL"> XL </option>
-                  <option value="2XL"> 2XL </option>
-                </select>
+              <div className="product-info"> 
+                <h3><b>{name}</b></h3>
+                <h2>${price}</h2>
+                {/* button logic - snipcart api connection */}
+                <button className="snipcart-add-item"
+                  data-item-id={productSlug}
+                  // data-item-url={``}
+                  data-item-price={price}
+                  data-item-description={description}
+                  data-item-image={image[0].url}
+                  data-item-name={name}
+                  data-item-custom1-name="Size"
+                  data-item-custom1-options="Small|Medium|Large|XL|XXL"
+                  data-item-custom1-placeholder="Select Size"
+                  data-item-stackable="never"
+                  data-item-weight="173"
+                 
+                  >
+                  Add to cart
+                </button>
               </div>
-
-              {/* button logic - snipcart api connection */}
-              <button className="snipcart-add-item"
-                data-item-id={productSlug}
-                data-item-price={price}
-                data-item-description={description}
-                data-item-image={image[0].url}
-                data-item-name={name}
-                data-item-custom1-name="Size"
-                data-item-custom1-options="Small|Medium|Large|XL|XXL"
-                data-item-custom1-value="Brown" 
-                data-item-stackable="never"
-                >
-                Add to cart
-              </button>
           </div>
         ))}
       </div>
+      <div className="shop-banner" id="shop-banner"></div>
+      <div className="shop-banner" id="blog-banner"> <span><h1>Blog</h1></span></div>
       <div className="homeBody">
         {/* Feed of Posts  */}
         <div className="blogFeed">
@@ -151,7 +156,9 @@ useEffect(()=> {
                         </div>
                         <br/>
                         <div className='postPreviewText'>
-                          <h2> <b>{title}</b></h2> 
+                          <div className="preview-text-box">
+                            <h2> <b>{title}</b></h2> 
+                          </div>
                           <small>
                             {/* Moment reorganizes the Data into a human readable format */}
                             {moment(publishedAt).format("dddd | MMM DD,YYYY | h:mma")} <br/>
@@ -172,7 +179,7 @@ useEffect(()=> {
             </div>
             <div id="categories-stream">
               {/* blog categories passed to categories component as 'choices' prop */}
-              {/* <Categories choices={graphCategory} /> */}
+              <Categories choices={graphCategory} />
             </div>
           </div>
         </div>

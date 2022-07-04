@@ -2,9 +2,6 @@ import { getGraphCMS } from "../../lib/graphcms";
 import Head from "next/head";
 import Layout from "../../components/layout";
 import { GraphQLClient } from 'graphql-request'
-import matter from 'gray-matter'
-import {remark} from 'remark'
-import html from 'remark-html'
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Image from "next/image";
 
@@ -57,18 +54,11 @@ export async function getStaticProps( context ){
     );
       
     
-    const matterResult = await matter(await posts[0].content.markdown)
-    const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-    
-    const contentHtml = await processedContent.toString()
     
     
     return {
         props: {
-            posts,
-            contentHtml
+            posts
         }
     }
 }
@@ -79,13 +69,13 @@ export async function getStaticPaths(){
 
     return {
         paths: posts.map(({ slug }) => ({
-            params: { slug },
+            params: { slug }
         })),
-        fallback: false,
+        fallback: false
     }
 }
 
-export default function Blog({ posts, contentHtml }){
+export default function Blog({ posts}){
     
     const img = posts[0].featuredImage.url;
 

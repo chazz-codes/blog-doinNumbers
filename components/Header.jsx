@@ -3,11 +3,14 @@ import Link from 'next/link'
 import Image from 'next/image';
 import Form from './Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faCartShopping, faShoppingCart} from "@fortawesome/free-solid-svg-icons"
+import { useSnipcart } from 'use-snipcart/useSnipcart'
 
 
 const Header = () => {
 
+    const { cart = {}} = useSnipcart()
+   
    const [isActive, setActive] = useState(false)
 
    
@@ -40,7 +43,20 @@ const Header = () => {
             
             <div className="header-button-container">
                 <button id="modalButton" onClick={toggleClass}>Contact</button>
-
+                <span>
+                    <button id="cashout" className="snipcart-checkout">
+                        <div id="cashout-txt">
+                            <h3>
+                            $ {cart.subtotal?.toFixed(2)}
+                            </h3>
+                        </div>
+                        <div id="cart">
+                            <FontAwesomeIcon icon={faShoppingCart} size="2xs" />
+                        </div>
+                    </button>
+                    
+                </span>
+                <br/>
             </div>
             <div className={`modal ${isActive ? "visible" : "not"}`} id="modal">
                 <div className="modal-content">

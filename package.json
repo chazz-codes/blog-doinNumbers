@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chec/commerce.js": "^2.8.0",
     "@emailjs/browser": "^3.6.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -29,6 +28,7 @@
     "html-react-parser": "^1.4.10",
     "moment": "^2.29.3",
     "next": "12.1.3",
+    "printful-request": "^1.1.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-hook-form": "^7.32.2",
@@ -40,7 +40,8 @@
     "remark-html": "^15.0.1",
     "sass": "^1.50.0",
     "swr": "^1.3.0",
-    "use-debounce": "^8.0.1"
+    "use-debounce": "^8.0.1",
+    "use-snipcart": "^1.1.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
