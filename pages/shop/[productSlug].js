@@ -63,12 +63,12 @@ return (
         <h1> # {products[0].name} </h1>
         {products[0].price}
         <button className="snipcart-add-item"
-                  data-item-id={productSlug}
-                  data-item-url={`/shop/${productSlug}`}
-                  data-item-price={price}
-                  data-item-description={description}
-                  data-item-image={image[0].url}
-                  data-item-name={name}
+                  data-item-id={products[0].productSlug}
+                  data-item-url={`/shop/${products[0].productSlug}`}
+                  data-item-price={products[0].price}
+                  data-item-description={products[0].description}
+                  data-item-image={products[0].image[0].url}
+                  data-item-name={products[0].name}
                   data-item-custom1-name="Size"
                   data-item-custom1-options="Small|Medium|Large|XL|XXL"
                   data-item-custom1-placeholder="Select Size"
