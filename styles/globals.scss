@@ -46,26 +46,40 @@ body {
 
 .shop-banner {
   height: 11em;
-  color:#18181B;
+  color:black;
+  background-color: white;
   text-align: center;
 }
 
+#spacer {
+  background-color: #181818;
+}
+
+#spacer2 {
+  height: 5em;
+  background-color: #181818;
+}
+
 #blog-banner {
-  // background-image: url(https://res.cloudinary.com/doinnumbers/image/upload/v1656318950/doinNumbers-banner_tzzlwo.png);
-  background-color: #a952ff;
-  background-position-y: 33%;
+  // background-image: url(https://res.cloudinary.com/doinnumbers/image/upload/v1657320749/blog-banner_qzhofw.png);
+  background-color: #181818;
+  background-position: center;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 
 #shop-banner {
-  // background-image: url(https://res.cloudinary.com/doinnumbers/image/upload/v1656318950/doinNumbers-banner_tzzlwo.png);
+  // background-image: url(https://res.cloudinary.com/doinnumbers/image/upload/v1657320083/shop-banner_um82ev.png);
   background-position: center;
   background-color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: black;
 }
 .productBox {
   
@@ -270,6 +284,12 @@ body {
 }
 
 @media screen and (max-width: 1000px){
+  .productBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .articleBox {
     padding-left: 1em;
     padding-right: 1em; 
@@ -289,7 +309,7 @@ body {
   .postPreviewText{
     padding-left: 0;
     text-align: center;
-    width: 60%;
+    width: 70%;
   }
   .postPreview{
     flex-direction: column;
@@ -509,6 +529,19 @@ input[type=submit] {
 
 
 @media screen and (max-width:600px){
+
+  .postPreviewText{
+    width: 90%;
+  }
+
+  .product-info {
+    width: 70%;
+  }
+
+  #cart-visual {
+    display:none;
+  }
+
   .col-25, .col-75, input[type=submit]{
     width: 100%;
     margin-top: 0;

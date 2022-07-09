@@ -62,6 +62,22 @@ return (
     <Layout>
         <h1> # {products[0].name} </h1>
         {products[0].price}
+        <button className="snipcart-add-item"
+                  data-item-id={productSlug}
+                  data-item-url={`/shop/${productSlug}`}
+                  data-item-price={price}
+                  data-item-description={description}
+                  data-item-image={image[0].url}
+                  data-item-name={name}
+                  data-item-custom1-name="Size"
+                  data-item-custom1-options="Small|Medium|Large|XL|XXL"
+                  data-item-custom1-placeholder="Select Size"
+                  data-item-stackable="never"
+                  data-item-weight="173"
+                 
+                  >
+                  Add to cart
+                </button>
     </Layout>
 )
     

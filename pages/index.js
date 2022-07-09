@@ -88,10 +88,15 @@ useEffect(()=> {
               <QuoteofTheDay date={today} quotes={quoteData[today]}/>
             </figcaption>
           </figure>
+      <div className="shop-banner" id="spacer"> </div>
       <div className="shop-banner" > </div>
-      <div className="shop-banner" id="shop-banner"> </div>
-      <div className="shop-banner" id="shop-banner" > SHOP </div>
-      
+      <div className="shop-banner" id="shop-banner" >
+        <Image 
+              width={80}
+              height={90}
+              src={'/shop-text.svg'}
+            />
+      </div>    
       <div className="shop">
         {/* map render products (from graphCMS)  */}
         {products.map(({name, image, price, description, productSlug}) => (
@@ -107,7 +112,7 @@ useEffect(()=> {
                 {/* button logic - snipcart api connection */}
                 <button className="snipcart-add-item"
                   data-item-id={productSlug}
-                  // data-item-url={``}
+                  data-item-url={`/shop/${productSlug}`}
                   data-item-price={price}
                   data-item-description={description}
                   data-item-image={image[0].url}
@@ -125,19 +130,26 @@ useEffect(()=> {
           </div>
         ))}
       </div>
-      <div className="shop-banner" id="shop-banner"></div>
-      <div className="shop-banner" id="blog-banner"> <span><h1>Blog</h1></span></div>
+      <div className="shop-banner" id="spacer2" ></div>
+      <div className="shop-banner" id="blog-banner"> 
+          <Image 
+            width={80}
+            height={90}
+            src={'/blog-text.svg'}
+          />
+      </div>
+      <div className="shop-banner" id="spacer2" ></div>
       <div className="homeBody">
         {/* Feed of Posts  */}
         <div className="blogFeed">
-          <section>
+          {/* <section>
             <br/>
             <p>Hey my name is <b>Chazz</b>. I am a software engineer and I enjoy lofi music.
             contact me via <a href='mailto:chazz@doinnumbers.com'>email</a>
             </p>
             <br/>
             <br/>
-          </section>
+          </section> */}
           <div className="main-feed">
             <div id="post-stream">
                 <div className="section-title"> <h1><span>Latest Posts</span></h1></div>

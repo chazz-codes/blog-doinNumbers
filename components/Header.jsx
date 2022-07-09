@@ -43,7 +43,7 @@ const Header = () => {
             
             <div className="header-button-container">
                 <button id="modalButton" onClick={toggleClass}>Contact</button>
-                <span>
+                <span id="cart-visual">
                     <button id="cashout" className="snipcart-checkout">
                         <div id="cashout-txt">
                             <h3>
